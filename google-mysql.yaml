@@ -4,7 +4,7 @@ metadata:
   name: a-team-mysql
   namespace: a-team
 spec:
-  id: a-team-mysql-1
+  id: a-team-mysql-4
   compositionSelector:
     matchLabels:
       provider: google
@@ -12,3 +12,5 @@ spec:
   parameters:
     version: "8_0"
     size: small
+  writeConnectionSecretToRef:
+    name: a-team-mysql

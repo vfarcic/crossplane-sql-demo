@@ -66,6 +66,7 @@ metadata:
     provider: google
     db: mysql
 spec:
+  writeConnectionSecretsToNamespace: crossplane-system
   compositeTypeRef:
     apiVersion: devopstoolkitseries.com/v1alpha1
     kind: CompositeSQL
@@ -88,6 +89,11 @@ spec:
             backupConfiguration:
               enabled: true
               binaryLogEnabled: true
+            ipConfiguration:
+              ipv4Enabled: true
+              authorizedNetworks:
+              - name: all
+                value: 0.0.0.0/0
         writeConnectionSecretToRef:
           namespace: crossplane-system
     patches:
@@ -117,3 +123,7 @@ spec:
     - type: MatchString
       fieldPath: status.atProvider.state
       matchString: RUNNABLE
+    connectionDetails:
+    - fromConnectionSecretKey: username
+    - fromConnectionSecretKey: password
+    - fromConnectionSecretKey: publicIP

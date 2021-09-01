@@ -4,7 +4,9 @@ metadata:
   name: compositesqls.devopstoolkitseries.com
 spec:
   connectionSecretKeys:
-  - kubeconfig
+  - username
+  - password
+  - publicIP
   defaultCompositionRef:
     name: google-postgres
   group: devopstoolkitseries.com

@@ -1,0 +1,38 @@
+apiVersion: databases.schemahero.io/v1alpha4
+kind: Database
+metadata:
+  name: dot
+  namespace: a-team
+spec:
+  immediateDeploy: true
+  connection:
+    mysql:
+      uri:
+        valueFrom:
+          secretKeyRef: 
+        # value: username:password@tcp(host:3306)/dbname?tls=false
+        # value: root:plTZbHnmXBXH4ljAPAxYrEmQ2fv@tcp(34.138.82.211:3306)/dot?tls=false
+
+---
+
+apiVersion: schemas.schemahero.io/v1alpha4
+kind: Table
+metadata:
+  name: dot-products
+  namespace: a-team
+spec:
+  database: dot
+  name: products
+  schema:
+    mysql:
+      primaryKey:
+      - id
+      columns:
+      - name: id
+        type: int
+        constraints:
+          notNull: true
+      - name: name
+        type: varchar
+      - name: price
+        type: decimal
