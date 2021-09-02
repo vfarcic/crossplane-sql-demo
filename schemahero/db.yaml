@@ -8,10 +8,10 @@ spec:
   connection:
     mysql:
       uri:
-        valueFrom:
-          secretKeyRef: 
+        # valueFrom:
+        #   secretKeyRef: 
         # value: username:password@tcp(host:3306)/dbname?tls=false
-        # value: root:plTZbHnmXBXH4ljAPAxYrEmQ2fv@tcp(34.138.82.211:3306)/dot?tls=false
+        value: root:k71wJgefDicU4qhkoMxwFXoYFXb@tcp(34.74.29.91:3306)/dot?tls=false
 
 ---
 

@@ -127,3 +127,39 @@ spec:
     - fromConnectionSecretKey: username
     - fromConnectionSecretKey: password
     - fromConnectionSecretKey: publicIP
+  - name: sql-config
+    base:
+      apiVersion: mysql.sql.crossplane.io/v1alpha1
+      kind: ProviderConfig
+      spec:
+        credentials:
+          source: MySQLConnectionSecret
+          connectionSecretRef:
+            namespace: crossplane-system
+    patches:
+    - fromFieldPath: spec.id
+      toFieldPath: metadata.name
+    - fromFieldPath: spec.writeConnectionSecretToRef.namespace
+      toFieldPath: spec.credentials.secretRef.namespace
+    - fromFieldPath: spec.id
+      toFieldPath: spec.credentials.connectionSecretRef.name
+      transforms:
+        - type: string
+          string:
+            fmt: "%s-sql"
+    readinessChecks:
+      - type: None
+  - name: sql-db
+    base:
+      apiVersion: mysql.sql.crossplane.io/v1alpha1
+      kind: Database
+      metadata:
+        name: mydb
+      spec: {}
+    patches:
+    - fromFieldPath: spec.id
+      toFieldPath: metadata.name
+    - fromFieldPath: spec.id
+      toFieldPath: spec.providerConfigRef.name
+    readinessChecks:
+      - type: None
