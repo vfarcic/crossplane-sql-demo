@@ -4,7 +4,7 @@ metadata:
   name: a-team-mysql
   namespace: a-team
 spec:
-  id: a-team-mysql-7
+  id: a-team-mysql
   compositionSelector:
     matchLabels:
       provider: google

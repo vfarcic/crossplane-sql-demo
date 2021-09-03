@@ -8,7 +8,7 @@ spec:
   connection:
     mysql:
       uri:
-        value: root:ngnSuY74FoxIm31wG0e652sfBsz@tcp(35.237.42.229:3306)/dot?tls=false
+        value: root:password@tcp(host:3306)/dot?tls=false
 
 ---
 

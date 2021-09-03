@@ -154,7 +154,7 @@ spec:
       apiVersion: mysql.sql.crossplane.io/v1alpha1
       kind: Database
       metadata:
-        name: mydb
+        name: dot
       spec: {}
     patches:
     - fromFieldPath: spec.id

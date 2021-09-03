@@ -4,7 +4,7 @@ metadata:
   name: a-team-postgres
   namespace: a-team
 spec:
-  id: a-team-postgres-1
+  id: a-team-postgres
   compositionSelector:
     matchLabels:
       provider: google
